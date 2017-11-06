@@ -1,9 +1,8 @@
 import json
-from client import Client, auth, campaigns
+import client_builder
+from client import campaigns
 
-
-client = Client("http://localhost:9040/", "ash.ketchum@alabastia.pkm", "pickachu")
-auth.authenticate(client)
+client = client_builder.build()
 
 campaign = campaigns.create(client, {
     "name": "My zen campaign",
