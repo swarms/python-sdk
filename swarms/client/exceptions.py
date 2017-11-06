@@ -1,0 +1,2 @@
+class UnexpectedHTTPStatusCode(RuntimeError):
+    pass
