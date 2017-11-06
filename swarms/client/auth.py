@@ -1,5 +1,4 @@
 import json
-from exceptions import UnexpectedHTTPStatusCode
 
 
 def authenticate(client):
@@ -8,9 +7,7 @@ def authenticate(client):
         "password": client.password,
     })
 
-    if response.status_code == 200:
-        client.auth_token = json.loads(response.content)["accessToken"]
-    else:
-        raise UnexpectedHTTPStatusCode()
+    auth_token = json.loads(response.content.decode())["accessToken"]
+    client.set_auth_token(auth_token)
 
     return response
