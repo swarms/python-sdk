@@ -21,7 +21,11 @@ class Client:
 
     def handle_response(self, response):
         if response.status_code >= 200 and response.status_code < 300:
-            return response
+            content = response.content.decode()
+            if len(content) > 0:
+                return json.loads(content)
+            else:
+                return {}
         else:
             raise UnexpectedHTTPStatusCode(response.status_code, response.content)
 
@@ -29,10 +33,14 @@ class Client:
         request = requests.get(self.base_url + url, headers=self.headers)
         return self.handle_response(request)
 
-    def post(self, url, payload):
+    def post(self, url, payload = None):
         request = requests.post(self.base_url + url, headers=self.headers, data=json.dumps(payload))
         return self.handle_response(request)
 
     def put(self, url, payload):
         request = requests.put(self.base_url + url, headers=self.headers, data=json.dumps(payload))
+        return self.handle_response(request)
+
+    def delete(self, url):
+        request = requests.delete(self.base_url + url, headers=self.headers)
         return self.handle_response(request)
