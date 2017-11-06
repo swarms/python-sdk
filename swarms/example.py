@@ -17,5 +17,5 @@ campaign = campaigns.create(client, {
 
 campaigns.publish(client, campaign)
 
-campaign_list = campaigns.list(client)
+campaign_list = campaigns.get_all(client)
 print(json.dumps(campaign_list))

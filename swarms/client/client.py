@@ -19,8 +19,9 @@ class Client:
     def set_auth_token(self, auth_token):
         self.headers["X-Auth-Token"] = auth_token
 
-    def handle_response(self, response):
-        if response.status_code >= 200 and response.status_code < 300:
+    @staticmethod
+    def handle_response(response):
+        if 200 <= response.status_code < 300:
             content = response.content.decode()
             if len(content) > 0:
                 return json.loads(content)
@@ -30,17 +31,17 @@ class Client:
             raise UnexpectedHTTPStatusCode(response.status_code, response.content)
 
     def get(self, url):
-        request = requests.get(self.base_url + url, headers=self.headers)
-        return self.handle_response(request)
+        response = requests.get(self.base_url + url, headers=self.headers)
+        return self.handle_response(response)
 
-    def post(self, url, payload = None):
-        request = requests.post(self.base_url + url, headers=self.headers, data=json.dumps(payload))
-        return self.handle_response(request)
+    def post(self, url, payload=None):
+        response = requests.post(self.base_url + url, headers=self.headers, data=json.dumps(payload))
+        return self.handle_response(response)
 
     def put(self, url, payload):
-        request = requests.put(self.base_url + url, headers=self.headers, data=json.dumps(payload))
-        return self.handle_response(request)
+        response = requests.put(self.base_url + url, headers=self.headers, data=json.dumps(payload))
+        return self.handle_response(response)
 
     def delete(self, url):
-        request = requests.delete(self.base_url + url, headers=self.headers)
-        return self.handle_response(request)
+        response = requests.delete(self.base_url + url, headers=self.headers)
+        return self.handle_response(response)
