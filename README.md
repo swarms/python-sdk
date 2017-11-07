@@ -1,7 +1,7 @@
-Swarms API Python Client Library
-================================
+Swarms API Python SDK
+=====================
 
-This repo will contain a Python library to interface with the Swarms' API, as well as examples of use.
+This repo contains a Python software development kit to interface with the Swarms' API, as well as examples of use.
 
 Get started
 -----------
