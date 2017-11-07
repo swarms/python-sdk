@@ -1,7 +1,7 @@
-class Auth:
-    def __init__(self, client):
-        self.client = client
+from . import BaseService
 
+
+class Auth(BaseService):
     def authenticate(self):
         response = self.client.post("/auth/token/request", {
             "email": self.client.username,

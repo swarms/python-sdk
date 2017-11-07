@@ -1,26 +1,9 @@
 from .utils.hal import get_link
-from . import BaseService
+from . import CrudService
 
 
-class Campaigns(BaseService):
-    def __init__(self, client):
-        self.client = client
-
-    # crud
-    def create(self, campaign):
-        return self.client.post("/campaigns", campaign)
-
-    def get_all(self):
-        return self.client.get("/campaigns")
-
-    def get(self, campaign_id):
-        return self.client.get("/campaigns/%i" % campaign_id)
-
-    def update(self, campaign):
-        return self.client.put(get_link(campaign, "update"), campaign)
-
-    def delete(self, campaign):
-        return self.client.delete(get_link(campaign, "self"))
+class Campaigns(CrudService):
+    path = "campaigns"
 
     # copy a campaign
     def copy(self, campaign):
