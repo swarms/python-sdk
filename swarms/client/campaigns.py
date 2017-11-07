@@ -1,6 +1,7 @@
 from .hal import get_link
 
 
+# crud
 def create(client, campaign):
     return client.post("/campaigns", campaign)
 
@@ -21,10 +22,12 @@ def delete(client, campaign):
     return client.delete(get_link(campaign, "self"))
 
 
+# copy a campaign
 def copy(client, campaign):
     return client.post(get_link(campaign, "copy"))
 
 
+# manage campaign's state
 def publish(client, campaign):
     return client.post(get_link(campaign, "publish"))
 
@@ -39,3 +42,20 @@ def pause(client, campaign):
 
 def cont(client, campaign):
     return client.post(get_link(campaign, "continue"))
+
+
+def get_ids(resources):
+    return map(lambda r: r["id"], resources)
+
+
+# manage campaign's jobs
+def add_jobs(client, campaign, jobs):
+    return client.post(get_link(campaign, "jobs"), get_ids(jobs))
+
+
+def update_jobs(client, campaign, jobs):
+    return client.put(get_link(campaign, "jobs"), get_ids(jobs))
+
+
+def remove_jobs(client, campaign, jobs):
+    return client.delete(get_link(campaign, "jobs"), get_ids(jobs))
