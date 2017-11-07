@@ -1,11 +1,11 @@
 import json
-import client_builder
-from client import campaigns, jobs
+import config
+from client import services
+
+campaigns, jobs = services.get(config)
 
 
-client = client_builder.build()
-
-campaign = campaigns.create(client, {
+campaign = campaigns.create({
     "name": "My zen campaign",
     "title": "Zen campaign",
     "estDuration": "30 seconds",
@@ -13,15 +13,15 @@ campaign = campaigns.create(client, {
     "results": 100,
 })
 
-job1 = jobs.create(client, {
+job1 = jobs.create({
     "name": "Solve koans"
 })
 
-job2 = jobs.create(client, {
+job2 = jobs.create({
     "name": "Meditate"
 })
 
-campaigns.add_jobs(client, campaign, [job1, job2])
+campaigns.add_jobs(campaign, [job1, job2])
 
 # TODO add tasks
 
@@ -29,8 +29,8 @@ campaigns.add_jobs(client, campaign, [job1, job2])
 # You need to top up your account to publish the campaign!
 # campaigns.publish(client, campaign)
 
-campaign_list = campaigns.get_all(client)
+campaign_list = campaigns.get_all()
 print(json.dumps(campaign_list))
 
-job_list = jobs.get_all(client)
+job_list = jobs.get_all()
 print(json.dumps(job_list))

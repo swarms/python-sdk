@@ -1,10 +1,14 @@
-def authenticate(client):
-    response = client.post("/auth/token/request", {
-        "email": client.username,
-        "password": client.password,
-    })
+class Auth:
+    def __init__(self, client):
+        self.client = client
 
-    auth_token = response["accessToken"]
-    client.set_auth_token(auth_token)
+    def authenticate(self):
+        response = self.client.post("/auth/token/request", {
+            "email": self.client.username,
+            "password": self.client.password,
+        })
 
-    return response
+        auth_token = response["accessToken"]
+        self.client.set_auth_token(auth_token)
+
+        return response

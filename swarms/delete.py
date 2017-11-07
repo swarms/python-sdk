@@ -1,23 +1,24 @@
 import sys
-import client_builder
-from client import Client, exceptions, auth, campaigns, jobs
+import config
+from client import services, exceptions
 
 sys.exit("You'll have to comment out this line to be able to delete all your stuff...")
 
-client = client_builder.build()
+campaigns, jobs = services.get(config)
 
-job_list = jobs.get_all(client)
+
+job_list = jobs.get_all()
 for job in job_list["jobs"]:
     print("deleting job %i: %s" % (job["id"], job["name"]))
-    jobs.delete(client, job)
+    jobs.delete(job)
 
-campaign_list = campaigns.get_all(client)
+campaign_list = campaigns.get_all()
 for campaign in campaign_list["campaigns"]:
     print("deleting campaign %i: %s" % (campaign["id"], campaign["name"]))
     try:
         # currently running campaigns can't be deleted
-        campaigns.cancel(client, campaign)
+        campaigns.cancel(campaign)
     except exceptions.HalLinkNotFound:
         pass
 
-    campaigns.delete(client, campaign)
+    campaigns.delete(campaign)

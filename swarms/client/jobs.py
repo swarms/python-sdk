@@ -1,27 +1,31 @@
-from .hal import get_link
+from .utils.hal import get_link
 
 
-# crud
-def create(client, job):
-    return client.post("/jobs", job)
+class Jobs:
+    def __init__(self, client):
+        self.client = client
+
+    # crud
+    def create(self, job):
+        return self.client.post("/jobs", job)
 
 
-def get_all(client):
-    return client.get("/jobs")
+    def get_all(self):
+        return self.client.get("/jobs")
 
 
-def get(client, job_id):
-    return client.get("/jobs/%i" % job_id)
+    def get(self, job_id):
+        return self.client.get("/jobs/%i" % job_id)
 
 
-def update(client, job):
-    return client.put(get_link(job, "update"), job)
+    def update(self, job):
+        return self.client.put(get_link(job, "update"), job)
 
 
-def delete(client, job):
-    return client.delete(get_link(job, "self"))
+    def delete(self, job):
+        return self.client.delete(get_link(job, "self"))
 
 
-# copy a job
-def copy(client, job):
-    return client.post(get_link(job, "copy"))
+    # copy a job
+    def copy(self, job):
+        return self.client.post(get_link(job, "copy"))
