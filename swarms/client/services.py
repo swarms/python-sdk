@@ -1,4 +1,4 @@
-from . import Client, Auth, Campaigns, Jobs
+from . import Client, Auth, Campaigns, Jobs, Tasks
 
 
 def get(config):
@@ -11,4 +11,4 @@ def get(config):
     auth = Auth(cli)
     auth.authenticate()
 
-    return Campaigns(cli), Jobs(cli)
+    return Campaigns(cli), Jobs(cli), Tasks(cli)

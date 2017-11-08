@@ -2,10 +2,11 @@ import json
 import config
 from client import services
 
-campaigns, jobs = services.get(config)
+campaigns, jobs, tasks = services.get(config)
 
 
-campaign = campaigns.create({
+# Create a campaign
+zenCampaign = campaigns.create({
     "name": "My zen campaign",
     "title": "Zen campaign",
     "estDuration": "30 seconds",
@@ -13,17 +14,59 @@ campaign = campaigns.create({
     "results": 100,
 })
 
-job1 = jobs.create({
-    "name": "Solve koans"
+# Add jobs to the campaign
+koanJob = jobs.create({"name": "Solve koans"})
+meditationJob = jobs.create({"name": "Meditate"})
+campaigns.add_jobs(zenCampaign, [koanJob, meditationJob])
+
+# Add tasks to koan job
+oneHandClappingTask = tasks.create({
+    "name": "One hand clapping",
+    "components": [
+        {
+            "type": "Instruction",
+            "text": "Record the sound of one hand clapping.",
+        }, {
+            "type": "AudioRecording",
+            "minDurationInSeconds": 3,
+            "maxDurationInSeconds": 9,
+        }
+    ]
 })
 
-job2 = jobs.create({
-    "name": "Meditate"
+buddhaNatureTask = tasks.create({
+    "name": "Buddha nature",
+    "components": [
+        {
+            "type": "Question",
+            "text": "Does a dog have Buddha nature or not?",
+        }, {
+            "type": "BinaryChoice",
+            "option1": "Yes",
+            "option2": "No",
+        }
+    ]
 })
 
-campaigns.add_jobs(campaign, [job1, job2])
+jobs.update_tasks(koanJob, [oneHandClappingTask, buddhaNatureTask])
 
-# TODO add tasks
+# Add tasks to meditation job
+breathingMeditationTask = tasks.create({
+    "name": "Breathing meditation",
+    "components": [
+        {
+            "type": "Instruction",
+            "text": "Look at a wall. Don't move.",
+        }, {
+            "type": "VideoRecording",
+            "minDurationInSeconds": 60 * 60,
+            "maxDurationInSeconds": 60 * 60 * 24,
+            "landscape": False,
+        }
+    ]
+})
+
+jobs.update_tasks(meditationJob, [breathingMeditationTask])
 
 
 # You need to top up your account to publish the campaign!

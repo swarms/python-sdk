@@ -23,6 +23,9 @@ class Campaigns(CrudService):
         return self.client.post(get_link(campaign, "continue"))
 
     # manage campaign's jobs
+    def get_jobs(self, campaign):
+        return self.client.get(get_link(campaign, "jobs"))
+
     def add_jobs(self, campaign, jobs):
         return self.client.post(get_link(campaign, "jobs"), self.get_ids(jobs))
 
