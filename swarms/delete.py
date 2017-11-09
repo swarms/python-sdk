@@ -1,6 +1,7 @@
 import sys
 import config
-from client import services, exceptions
+from sdk import services, exceptions
+
 
 sys.exit("You'll have to comment out this line to be able to delete all your stuff...")
 

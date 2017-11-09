@@ -1,6 +1,6 @@
 import json
 import config
-from client import services
+from sdk import services
 
 
 campaigns, jobs, tasks, results = services.get(config)
@@ -16,7 +16,6 @@ for campaign in campaign_list["campaigns"]:
     result_list = campaigns.results(campaign)
     for result in result_list["jobResults"]:
         print("    %s" % json.dumps(result))
-
 
 
 print("")

@@ -9,6 +9,9 @@ setup(
     url='http://github.com/swarms/python-sdk',
     author='Swarms Technologies',
     license='MIT',
+    packages=[
+        'swarms',
+    ],
     install_requires=[
         'requests',
     ],

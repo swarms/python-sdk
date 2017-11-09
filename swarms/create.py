@@ -1,6 +1,6 @@
 import json
 import config
-from client import services
+from sdk import services
 
 
 campaigns, jobs, tasks, results = services.get(config)
@@ -70,7 +70,7 @@ jobs.update_tasks(meditationJob, [breathingMeditationTask])
 
 
 # You need to top up your account to publish the campaign!
-# campaigns.publish(client, campaign)
+# campaigns.publish(campaign)
 
 campaign_list = campaigns.get_all()
 print(json.dumps(campaign_list))
