@@ -2,8 +2,8 @@ import json
 import config
 from client import services
 
-campaigns, jobs, tasks = services.get(config)
 
+campaigns, jobs, tasks, results = services.get(config)
 
 # Create a campaign
 zenCampaign = campaigns.create({

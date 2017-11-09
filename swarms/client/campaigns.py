@@ -1,4 +1,4 @@
-from .utils.hal import get_link
+from .utils.hal import has_link, get_link
 from . import CrudService
 
 
@@ -34,3 +34,10 @@ class Campaigns(CrudService):
 
     def remove_jobs(self, campaign, jobs):
         return self.client.delete(get_link(campaign, "jobs"), self.get_ids(jobs))
+
+    # get campaign's results
+    def results(self, campaign):
+        if has_link(campaign, "results"):
+            return self.client.get(get_link(campaign, "results"))
+        else:
+            return {"jobResults": []}

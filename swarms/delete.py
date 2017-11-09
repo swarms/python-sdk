@@ -4,7 +4,7 @@ from client import services, exceptions
 
 sys.exit("You'll have to comment out this line to be able to delete all your stuff...")
 
-campaigns, jobs, tasks = services.get(config)
+campaigns, jobs, tasks, results = services.get(config)
 
 task_list = tasks.get_all()
 for task in task_list["tasks"]:
