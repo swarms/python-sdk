@@ -7,18 +7,15 @@ from sdk import services, exceptions
 
 campaigns, jobs, tasks, results = services.get(config)
 
-task_page = tasks.next_page()
-for task in task_page["tasks"]:
+for task in tasks.get_all():
     print("deleting task %i: %s" % (task["id"], task["name"]))
     tasks.delete(task)
 
-job_page = jobs.next_page()
-for job in job_page["jobs"]:
+for job in jobs.get_all():
     print("deleting job %i: %s" % (job["id"], job["name"]))
     jobs.delete(job)
 
-campaign_page = campaigns.next_page()
-for campaign in campaign_page["campaigns"]:
+for campaign in campaigns.get_all():
     print("deleting campaign %i: %s" % (campaign["id"], campaign["name"]))
     try:
         # currently running campaigns can't be deleted

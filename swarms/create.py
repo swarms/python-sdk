@@ -72,8 +72,8 @@ jobs.update_tasks(meditationJob, [breathingMeditationTask])
 # You need to top up your account to publish the campaign!
 # campaigns.publish(campaign)
 
-campaign_list = campaigns.next_page()
+campaign_list = campaigns.get_page()
 print(json.dumps(campaign_list))
 
-job_list = jobs.next_page()
+job_list = jobs.get_page()
 print(json.dumps(job_list))

@@ -16,16 +16,16 @@ class CrudService(BaseService):
         return self.client.post("/%s" % self.path, resource)
 
     def get_all(self):
-        list = None
-        all = []
+        page = None
+        all_list = []
 
         while True:
-            list = self.next_page(list)
+            page = self.next_page(page)
 
-            if list is None:
-                return all
+            if page is None:
+                return all_list
 
-            all.extend(list)
+            all_list.extend(page[self.path])
 
     def get_page(self):
         return self.next_page()
