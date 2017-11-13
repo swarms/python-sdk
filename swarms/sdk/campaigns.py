@@ -40,4 +40,4 @@ class Campaigns(CrudService):
         if has_link(campaign, "results"):
             return self.client.get(get_link(campaign, "results"))
         else:
-            return {"jobResults": []}
+            return None

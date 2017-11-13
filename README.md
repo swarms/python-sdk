@@ -24,7 +24,7 @@ Simplest sample usage:
 
     campaigns, jobs, tasks, results = services.get(config)
 
-    print(campaigns.get_all())
+    print(campaigns.get_page())
 
 For more usage samples, please look at the examples in `swarms/create.py`
 (creates campaigns/jobs/tasks), `swarms/retrieve.py`, and `swarms/delete.py`.
