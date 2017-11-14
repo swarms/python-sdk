@@ -2,16 +2,20 @@ Swarms API Python SDK
 =====================
 
 This repo contains a Python software development kit to interface with the
-Swarms' API, as well as examples of use.
+[Swarms' API](https://swarms.docs.apiary.io/), as well as examples of use.
 
 Get started
 -----------
 
 This has been tested with Python 2.7 and Python 3.5 (should work with other 3.x
-versions too). Install the package from PyPI with `pip install swarms_sdk` or include
-`swarms_sdk` in your `requirements.txt` file.
+versions too). Install the package from PyPI with `pip install swarms_sdk` or
+include `swarms_sdk` in your `requirements.txt` file.
 
-To get your credentials, you currently need to shoot us an email: `info@swarms.tech`
+To get your credentials, you currently need to shoot us an email:
+`info@swarms.tech`
+
+Examples
+--------
 
 Simplest sample usage:
 
@@ -26,5 +30,16 @@ Simplest sample usage:
 
     print(campaigns.get_page())
 
-For more usage samples, please look at the examples in `swarms/create.py`
-(creates campaigns/jobs/tasks), `swarms/retrieve.py`, and `swarms/delete.py`.
+For more usage examples, please look at how to [create resources][create],
+[retrieve resources][retrieve], and [delete everything][delete].
+
+[create]: https://github.com/swarms/python-sdk/blob/master/swarms/create.py
+[retrieve]: https://github.com/swarms/python-sdk/blob/master/swarms/retrieve.py
+[delete]: https://github.com/swarms/python-sdk/blob/master/swarms/delete.py
+
+Further information
+-------------------
+
+Please see the [API docs](https://swarms.docs.apiary.io/) for general information.
+See the [components overview](https://swarms.docs.apiary.io/#reference/components-overview)
+to learn what types of components are available in your tasks.
