@@ -40,7 +40,7 @@ class CrudService(BaseService):
         return self.client.get("/%s/%i" % (self.path, resource_id))
 
     def update(self, resource):
-        return self.client.put(get_link(resource, "update"), resource)
+        return self.client.put(get_link(resource, "self"), resource)
 
     def delete(self, resource):
         return self.client.delete(get_link(resource, "self"))
