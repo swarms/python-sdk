@@ -32,12 +32,9 @@ class CrudService(BaseService):
 
     def next_page(self, collection=None):
         if collection is None:
-            return self.client.get("/%s?limit=1" % self.path)
             return self.client.get("/%s" % self.path)
         elif has_link(collection, "next"):
             return self.client.get(get_link(collection, "next"))
-        else:
-            return None
 
     def get(self, resource_id):
         return self.client.get("/%s/%i" % (self.path, resource_id))

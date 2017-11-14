@@ -39,5 +39,3 @@ class Campaigns(CrudService):
     def results(self, campaign):
         if has_link(campaign, "results"):
             return self.client.get(get_link(campaign, "results"))
-        else:
-            return None
