@@ -32,8 +32,13 @@ class Campaigns(CrudService):
     def update_jobs(self, campaign, jobs):
         return self.client.put(get_link(campaign, "jobs"), self.get_ids(jobs))
 
-    def remove_jobs(self, campaign, jobs):
-        return self.client.delete(get_link(campaign, "jobs"), self.get_ids(jobs))
+    # Not in the Apiary docs we're testing against. Plus it's weird anyway...
+    #
+    # def remove_jobs(self, campaign, jobs):
+    #     job_ids = self.get_ids(jobs)
+    #     url = get_link(campaign, "jobs") + "/" + ",".join(map(str, job_ids))
+    #     print(url)
+    #     return self.client.delete(url)
 
     # get campaign's results
     def results(self, campaign):

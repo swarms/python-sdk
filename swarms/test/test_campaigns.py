@@ -81,5 +81,42 @@ class CampaignsTest(unittest.TestCase):
             }
         })
 
+    def test_get_campaign_jobs(self):
+        jobs = self.campaigns.get_jobs({
+            "_links": {
+                "jobs": {
+                    "href": "/campaigns/3/jobs"
+                }
+            }
+        })
+        self.assertEqual(jobs["jobs"][0]["name"], "My first Job")
+
+    def test_add_campaign_jobs(self):
+        self.campaigns.add_jobs({
+            "_links": {
+                "jobs": {
+                    "href": "/campaigns/3/jobs"
+                }
+            }
+        }, [{"id": 1}, {"id": 2}, {"id": 3}])
+
+    def test_update_campaign_jobs(self):
+        self.campaigns.update_jobs({
+            "_links": {
+                "jobs": {
+                    "href": "/campaigns/3/jobs"
+                }
+            }
+        }, [{"id": 1}, {"id": 2}, {"id": 3}])
+
+    def test_get_results(self):
+        results = self.campaigns.results({
+            "_links": {
+                "results": {
+                    "href": "/campaigns/3/results"
+                }
+            }
+        })
+
 if __name__ == '__main__':
     unittest.main()
