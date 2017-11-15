@@ -117,6 +117,7 @@ class CampaignsTest(unittest.TestCase):
                 }
             }
         })
+        self.assertEqual(results["jobResults"][0]["state"], "InReview")
 
 if __name__ == '__main__':
     unittest.main()
