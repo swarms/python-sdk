@@ -45,5 +45,41 @@ class CampaignsTest(unittest.TestCase):
             }
         })
 
+    def test_campaigns_publish(self):
+        self.campaigns.publish({
+            "_links": {
+                "publish": {
+                    "href": "/campaigns/3/publish"
+                }
+            }
+        })
+
+    def test_campaigns_cancel(self):
+        self.campaigns.cancel({
+            "_links": {
+                "cancel": {
+                    "href": "/campaigns/3/cancel"
+                }
+            }
+        })
+
+    def test_campaigns_pause(self):
+        self.campaigns.pause({
+            "_links": {
+                "pause": {
+                    "href": "/campaigns/3/pause"
+                }
+            }
+        })
+
+    def test_campaigns_continue(self):
+        self.campaigns.cont({
+            "_links": {
+                "continue": {
+                    "href": "/campaigns/3/continue"
+                }
+            }
+        })
+
 if __name__ == '__main__':
     unittest.main()
