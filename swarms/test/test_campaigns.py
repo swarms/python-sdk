@@ -16,25 +16,34 @@ class CampaignsTest(unittest.TestCase):
             "results": 100,
         })
 
-    def test_campaigns_get(self):
+    def test_campaigns_get_page(self):
         page = self.campaigns.get_page()
         self.assertEqual(page["campaigns"][0]["name"], "My first Campaign")
 
+    def test_campaigns_get_one(self):
+        campaign = self.campaigns.get(3)
+        self.assertEqual(campaign["name"], "My first Campaign")
+
     def test_campaigns_update(self):
-        pass
-        #updated = self.campaigns.update({
-        #    "name": "My zen campaign",
-        #    "title": "Zen campaign",
-        #    "estDuration": "30 seconds",
-        #    "workerPayment": 0.1,
-        #    "results": 100,
-        #    "_links": {
-        #        "self": {
-        #            "href": config.base_url + "campaigns/3"
-        #        }
-        #    }
-        #})
-        #self.assertEqual(updated["name"], "My first Campaign")
+        campaign = self.campaigns.update({
+            "name": "My zen campaign",
+            "title": "Zen campaign",
+            "_links": {
+                "self": {
+                    "href": "/campaigns/3"
+                }
+            }
+        })
+        self.assertEqual(campaign["name"], "My first Campaign")
+
+    def test_campaigns_delete(self):
+        self.campaigns.delete({
+            "_links": {
+                "self": {
+                    "href": "/campaigns/3"
+                }
+            }
+        })
 
 if __name__ == '__main__':
     unittest.main()
