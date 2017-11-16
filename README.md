@@ -45,3 +45,9 @@ Further information
 Please see the [API docs](https://swarms.docs.apiary.io/) for general information.
 See the [components overview](https://swarms.docs.apiary.io/#reference/components-overview)
 to learn what types of components are available in your tasks.
+
+Development
+-----------
+
+To release a new version, increase version number in `setup.py`, create package
+with `python setup.py sdist` and release the package with `twine upload`.
