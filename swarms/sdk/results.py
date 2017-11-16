@@ -10,4 +10,4 @@ class Results(BaseService):
         return self.client.post(get_link(result, "reject"))
 
     def soft_reject(self, result):
-        return self.client.post(get_link(result, "soft-reject"))
+        return self.client.post(get_link(result, "softReject"))
