@@ -45,6 +45,16 @@ class CampaignsTest(unittest.TestCase):
             }
         })
 
+    def test_campaigns_copy(self):
+        campaign = self.campaigns.copy({
+            "_links": {
+                "copy": {
+                    "href": "/campaigns/3/copy"
+                }
+            }
+        })
+        self.assertEqual(campaign["name"], "My first Campaign")
+
     def test_campaigns_publish(self):
         self.campaigns.publish({
             "_links": {
@@ -118,6 +128,7 @@ class CampaignsTest(unittest.TestCase):
             }
         })
         self.assertEqual(results["jobResults"][0]["state"], "InReview")
+
 
 if __name__ == '__main__':
     unittest.main()
