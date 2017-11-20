@@ -25,7 +25,7 @@ class Client:
     @staticmethod
     def handle_response(response):
         if 200 <= response.status_code < 300:
-            content = response.content.decode()
+            content = response.content.decode('utf-8')
             if len(content) > 0:
                 return json.loads(content)
             else:
