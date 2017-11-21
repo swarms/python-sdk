@@ -10,8 +10,8 @@ Get started
 -----------
 
 This has been tested with Python 2.7 and Python 3.5 (should work with other 3.x
-versions too). Install the package from PyPI with `pip install swarms_sdk` or
-include `swarms_sdk` in your `requirements.txt` file.
+versions too). Install the package from PyPI with `pip install swarms-sdk` or
+include `swarms-sdk` in your `requirements.txt` file.
 
 To get your credentials, you currently need to shoot us an email:
 `info@swarms.tech`
