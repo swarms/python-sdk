@@ -39,8 +39,14 @@ For more usage examples, please look at how to [create resources][create],
 [retrieve]: https://github.com/swarms/python-sdk/blob/master/swarms/retrieve.py
 [delete]: https://github.com/swarms/python-sdk/blob/master/swarms/delete.py
 
-Further information
--------------------
+Resource upload
+---------------
+
+The SDK downloads any referenced resources and uploads them to Swarms' servers.
+This is done to prevent breakage when the original resources disappear.
+
+Information about the API
+-------------------------
 
 Please see the [API docs](https://swarms.docs.apiary.io/) for general information.
 See the [components overview](https://swarms.docs.apiary.io/#reference/components-overview)
