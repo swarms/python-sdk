@@ -13,7 +13,7 @@ class TasksTest(unittest.TestCase):
             "components": [
                 {
                     "type": "Text",
-		    "style": "Instruction",
+                    "style": "Instruction",
                     "text": "Record the sound of one hand clapping.",
                 }, {
                     "type": "AudioRecording",

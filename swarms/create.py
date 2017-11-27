@@ -25,7 +25,7 @@ oneHandClappingTask = tasks.create({
     "components": [
         {
             "type": "Text",
-	    "style": "Instruction",
+            "style": "Instruction",
             "text": "Record the sound of one hand clapping.",
         }, {
             "type": "AudioRecording",
@@ -40,7 +40,7 @@ buddhaNatureTask = tasks.create({
     "components": [
         {
             "type": "Text",
-	    "style": "Question",
+            "style": "Question",
             "text": "Does a dog have Buddha nature or not?",
         }, {
             "type": "BinaryChoice",
@@ -58,7 +58,7 @@ breathingMeditationTask = tasks.create({
     "components": [
         {
             "type": "Text",
-	    "style": "Instruction",
+            "style": "Instruction",
             "text": "Look at a wall. Don't move.",
         }, {
             "type": "VideoRecording",
