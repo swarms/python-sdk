@@ -17,7 +17,7 @@ for campaign in campaigns.get_all():
         for result in result_list["jobResults"]:
             print("    %s" % json.dumps(result))
 
-        result_list = campaigns.next_page(result_list)
+        result_list = campaigns.next_page(campaigns.path, result_list)
 
 
 print("")

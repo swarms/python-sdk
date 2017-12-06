@@ -10,6 +10,9 @@ class Jobs(CrudService):
         return self.client.post(get_link(job, "copy"))
 
     # manage job's tasks
+    def get_all_tasks(self, job):
+        return self.get_all_from_link(get_link(job, "tasks"), "tasks")
+
     def get_tasks(self, job):
         return self.client.get(get_link(job, "tasks"))
 

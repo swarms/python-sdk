@@ -23,6 +23,9 @@ class Campaigns(CrudService):
         return self.client.post(get_link(campaign, "continue"))
 
     # manage campaign's jobs
+    def get_all_jobs(self, campaign):
+        return self.get_all_from_link(get_link(campaign, "jobs"), "jobs")
+
     def get_jobs(self, campaign):
         return self.client.get(get_link(campaign, "jobs"))
 

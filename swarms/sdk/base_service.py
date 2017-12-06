@@ -9,6 +9,21 @@ class BaseService:
     def get_ids(resources):
         return list(map(lambda r: r["id"], resources))
 
+    def get_all_from_link(self, link, path):
+        page = self.client.get(link)
+        all_list = []
+
+        while True:
+            all_list.extend(page[path])
+            page = self.next_page(path, page)
+
+            if page is None:
+                return all_list
+
+    def next_page(self, path, collection=None):
+        if has_link(collection, "next"):
+            return self.client.get(get_link(collection, "next"))
+
 
 class CrudService(BaseService):
     # crud
@@ -16,25 +31,10 @@ class CrudService(BaseService):
         return self.client.post("/%s" % self.path, resource)
 
     def get_all(self):
-        page = None
-        all_list = []
-
-        while True:
-            page = self.next_page(page)
-
-            if page is None:
-                return all_list
-
-            all_list.extend(page[self.path])
+        return self.get_all_from_link("/%s" % self.path, self.path)
 
     def get_page(self):
-        return self.next_page()
-
-    def next_page(self, collection=None):
-        if collection is None:
-            return self.client.get("/%s" % self.path)
-        elif has_link(collection, "next"):
-            return self.client.get(get_link(collection, "next"))
+        return self.client.get("/%s" % self.path)
 
     def get(self, resource_id):
         return self.client.get("/%s/%i" % (self.path, resource_id))
