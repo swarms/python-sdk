@@ -44,6 +44,12 @@ class Campaigns(CrudService):
     #     return self.client.delete(url)
 
     # get campaign's results
-    def results(self, campaign):
+    def get_all_results(self, campaign):
+        if has_link(campaign, "results"):
+            return self.get_all_from_link(get_link(campaign, "results"), "jobResults")
+        else:
+            return []
+
+    def get_results(self, campaign):
         if has_link(campaign, "results"):
             return self.client.get(get_link(campaign, "results"))

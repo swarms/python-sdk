@@ -12,12 +12,9 @@ for campaign in campaigns.get_all():
 
     print("")
     print("  Results:")
-    result_list = campaigns.results(campaign)
-    while result_list is not None:
-        for result in result_list["jobResults"]:
-            print("    %s" % json.dumps(result))
-
-        result_list = campaigns.next_page(campaigns.path, result_list)
+    result_list = campaigns.get_all_results(campaign)
+    for result in result_list:
+        print("    %s" % json.dumps(result))
 
 
 print("")

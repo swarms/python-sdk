@@ -120,7 +120,7 @@ class CampaignsTest(unittest.TestCase):
         }, [{"id": 1}, {"id": 2}, {"id": 3}])
 
     def test_get_results(self):
-        results = self.campaigns.results({
+        results = self.campaigns.get_results({
             "_links": {
                 "results": {
                     "href": "/campaigns/3/results"
