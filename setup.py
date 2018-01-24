@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name='swarms-sdk',
-    version='0.7',
+    version='0.8',
     description='The Swarms API SDK',
     url='http://github.com/swarms/python-sdk',
     author='Swarms Technologies',
