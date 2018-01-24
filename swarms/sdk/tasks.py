@@ -13,7 +13,7 @@ class Tasks(CrudService, object):
         if response.status_code != 200:
             raise Exception("Could not retrieve file: %s" % url)
 
-        return self.client.post_file("/upload", file_name, response.content)
+        return self.client.post_file("/upload", file_name, response.content, response.headers['Content-Type'])
 
     def __get_url_map(self, components):
         urls = [c["url"] for c in components if "url" in c.keys()]

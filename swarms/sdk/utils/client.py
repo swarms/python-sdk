@@ -41,11 +41,11 @@ class Client:
         response = requests.post(self.base_url + url, headers=self.headers, data=json.dumps(payload))
         return self.handle_response(response)
 
-    def post_file(self, url, name, content):
+    def post_file(self, url, name, content, mimetype):
         response = requests.post(
             self.base_url + url,
             headers=self.token_headers(),
-            files={'file': (name, content)}
+            files={'file': (name, content, mimetype)}
         )
 
         return self.handle_response(response)
