@@ -1,19 +1,28 @@
 import requests
 from .utils.hal import get_link
 from . import CrudService
-
+import os.path
+import magic
 
 class Tasks(CrudService, object):
     path = "tasks"
 
     def __upload_from_url(self, url):
-        file_name = url.split('/')[-1]
-        response = requests.get(url)
+	if os.path.isfile(url):
+	    file_name = url
+	    mime = magic.Magic(mime=True)
+	    mimetype = mime.from_file(file_name)
+	
+        else:
+            file_name = url.split('/')[-1]
+            response = requests.get(url)
 
-        if response.status_code != 200:
-            raise Exception("Could not retrieve file: %s" % url)
+            if response.status_code != 200:
+                raise Exception("Could not retrieve file: %s" % url)
 
-        return self.client.post_file("/upload", file_name, response.content, response.headers['Content-Type'])
+	    mimetype = response.content
+
+            return self.client.post_file("/upload", file_name, mimetype, response.headers['Content-Type'])
 
     def __get_url_map(self, components):
         urls = [c["url"] for c in components if "url" in c.keys()]
