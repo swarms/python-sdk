@@ -8,11 +8,11 @@ class Tasks(CrudService, object):
     path = "tasks"
 
     def __upload_from_url(self, url):
-	if os.path.isfile(url):
-	    file_name = url
-	    mime = magic.Magic(mime=True)
-	    mimetype = mime.from_file(file_name)
-	
+        if os.path.isfile(url):
+            file_name = url
+            mime = magic.Magic(mime=True)
+            mimetype = mime.from_file(file_name)
+
         else:
             file_name = url.split('/')[-1]
             response = requests.get(url)
