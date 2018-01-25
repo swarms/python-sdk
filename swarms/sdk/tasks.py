@@ -10,6 +10,7 @@ class Tasks(CrudService, object):
     def __upload_from_url(self, url):
         if os.path.isfile(url):
             file_name = url
+            f = open(file_name, 'rb')
             mime = magic.Magic(mime=True)
             mimetype = mime.from_file(file_name)
 
@@ -20,9 +21,11 @@ class Tasks(CrudService, object):
             if response.status_code != 200:
                 raise Exception("Could not retrieve file: %s" % url)
 
-            mimetype = response.content
+            mimetype = response.headers['Content-Type']
+            
+            f = response.content
 
-        return self.client.post_file("/upload", file_name, mimetype, response.headers['Content-Type'])
+        return self.client.post_file("/upload", file_name, f, mimetype)
 
     def __get_url_map(self, components):
         urls = [c["url"] for c in components if "url" in c.keys()]
