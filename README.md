@@ -21,16 +21,18 @@ Examples
 
 Simplest sample usage:
 
-    from swarms.sdk import services
+```python
+from swarms.sdk import services
 
-    config = lambda: None
-    config.base_url = 'https://api.swarms.tech/'
-    config.username = 'email@example.com'
-    config.password = 'password'
+config = lambda: None
+config.base_url = 'https://api.swarms.tech/'
+config.username = 'email@example.com'
+config.password = 'password'
 
-    campaigns, jobs, tasks, results = services.get(config)
+campaigns, jobs, tasks, results = services.get(config)
 
-    print(campaigns.get_page())
+print(campaigns.get_page())
+```
 
 For more usage examples, please look at how to [create resources][create],
 [retrieve resources][retrieve], and [delete everything][delete].
