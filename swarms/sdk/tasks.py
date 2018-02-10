@@ -4,6 +4,7 @@ from . import CrudService
 import os.path
 import magic
 
+
 class Tasks(CrudService, object):
     path = "tasks"
 
@@ -22,7 +23,7 @@ class Tasks(CrudService, object):
                 raise Exception("Could not retrieve file: %s" % url)
 
             mimetype = response.headers['Content-Type']
-            
+
             f = response.content
 
         return self.client.post_file("/upload", file_name, f, mimetype)
