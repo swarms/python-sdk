@@ -1,4 +1,3 @@
-import sys
 import config
 from sdk import services, exceptions
 
