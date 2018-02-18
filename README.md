@@ -4,7 +4,7 @@ Swarms API Python SDK
 [![Build Status](https://travis-ci.org/swarms/python-sdk.svg?branch=master)](https://travis-ci.org/swarms/python-sdk)
 
 This repo contains a Python software development kit to interface with the
-[Swarms' API](https://swarms.docs.apiary.io/), as well as examples of use.
+[Swarms' API](https://docs.swarms.com), as well as examples of use.
 
 Get started
 -----------
@@ -50,7 +50,7 @@ This is done to prevent breakage when the original resources disappear.
 Information about the API
 -------------------------
 
-Please see the [API docs](https://swarms.docs.apiary.io/) for general information.
+Please see the [API docs](https://docs.swarms.com/) for general information.
 See the [components overview](https://swarms.docs.apiary.io/#reference/components-overview)
 to learn what types of components are available in your tasks.
 
