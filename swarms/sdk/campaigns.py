@@ -46,7 +46,7 @@ class Campaigns(CrudService):
     # get campaign's results
     def get_all_results(self, campaign):
         if has_link(campaign, "results"):
-            return self.get_all_from_link(get_link(campaign, "results"), "jobResults")
+            return self.get_all_from_link(get_link(campaign, "results"), "results")
         else:
             return []
 
