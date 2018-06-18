@@ -49,7 +49,7 @@ Information about the API
 -------------------------
 
 Please see the [API docs](https://docs.swarms.com/) for general information.
-See the [components overview](https://docs.swarms.com/#reference/components-overview)
+See the [components overview](https://docs.swarms.com/#components-overview)
 to learn what types of components are available in your tasks.
 
 Development
